@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveGameManager : MonoBehaviour
-{
+public class SaveGameManager : MonoBehaviour {
     public static SaveGameManager instance;
     [SerializeField] int worldSceneIndex = 1;
 
