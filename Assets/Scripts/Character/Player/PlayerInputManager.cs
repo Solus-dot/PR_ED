@@ -9,10 +9,16 @@ public class PlayerInputManager : MonoBehaviour {
     public static PlayerInputManager instance;
     PlayerControls playerControls;
 
+    [Header("MOVEMENT INPUT VALUES")]
     [SerializeField] Vector2 movementInput;
     public float horizontalInput;
     public float verticalInput;
     public float moveAmount;
+
+    [Header("CAMERA INPUT VALUES")]
+    [SerializeField] Vector2 cameraInput;
+    public float cameraHorizontalInput;
+    public float cameraVerticalInput;
 
     private void Awake() {
         if (instance == null) {
@@ -40,12 +46,13 @@ public class PlayerInputManager : MonoBehaviour {
     }
 
     private void OnEnable() {
-        playerControls.PlayerMovement.Enable();
+        playerControls.Enable();
         playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+        playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
     }
 
     private void OnDisable() {
-        playerControls.PlayerMovement.Disable();
+        playerControls.Disable();
     }
 
     private void OnDestroy() {
@@ -60,10 +67,11 @@ public class PlayerInputManager : MonoBehaviour {
     }
 
     private void Update() {
-        HandleMovementInput();
+        HandlePlayerMovementInput();
+        HandleCameraMovementInput();
     }
 
-    private void HandleMovementInput() {
+    private void HandlePlayerMovementInput() {
         horizontalInput = movementInput.x;
         verticalInput = movementInput.y;
 
@@ -71,5 +79,10 @@ public class PlayerInputManager : MonoBehaviour {
 
         if (moveAmount <= 0.5 && moveAmount > 0) moveAmount = 0.5f;
         else if (moveAmount <= 1 && moveAmount > 0.5) moveAmount = 1f;
+    }
+
+    private void HandleCameraMovementInput() {
+        cameraHorizontalInput = cameraInput.x;
+        cameraVerticalInput = cameraInput.y;
     }
 }

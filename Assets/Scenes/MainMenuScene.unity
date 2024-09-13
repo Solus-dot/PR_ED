@@ -1367,7 +1367,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5144a225fd665e5499acbfac9b485614, type: 3}
---- !u!1001 &2389103654356543754
+--- !u!1001 &1974430835569929376
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1378,7 +1378,12 @@ PrefabInstance:
     - target: {fileID: 29969524317560051, guid: 6ea7281958ad77f4cbf3791ec0200247,
         type: 3}
       propertyPath: m_Name
-      value: PlayerCamera
+      value: PlayerCamera (Left & Right)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546683999400922008, guid: 6ea7281958ad77f4cbf3791ec0200247,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4384644197569369602, guid: 6ea7281958ad77f4cbf3791ec0200247,
         type: 3}
@@ -1429,6 +1434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580053489578361285, guid: 6ea7281958ad77f4cbf3791ec0200247,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1583,4 +1593,4 @@ SceneRoots:
   - {fileID: 2120134551}
   - {fileID: 462768107}
   - {fileID: 3108530711823995919}
-  - {fileID: 2389103654356543754}
+  - {fileID: 1974430835569929376}
