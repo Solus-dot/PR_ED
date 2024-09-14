@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputManager : MonoBehaviour {
     public static PlayerInputManager instance;
+    public PlayerManager player;
+
     PlayerControls playerControls;
 
     [Header("MOVEMENT INPUT VALUES")]
@@ -79,6 +81,11 @@ public class PlayerInputManager : MonoBehaviour {
 
         if (moveAmount <= 0.5 && moveAmount > 0) moveAmount = 0.5f;
         else if (moveAmount <= 1 && moveAmount > 0.5) moveAmount = 1f;
+
+        if (player == null) return;
+
+        // Only Non-Strafing Movement
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
     }
 
     private void HandleCameraMovementInput() {
