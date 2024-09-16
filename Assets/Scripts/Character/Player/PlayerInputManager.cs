@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,16 +12,19 @@ public class PlayerInputManager : MonoBehaviour {
 
     PlayerControls playerControls;
 
+    [Header("CAMERA INPUT VALUES")]
+    [SerializeField] Vector2 cameraInput;
+    public float cameraHorizontalInput;
+    public float cameraVerticalInput;
+
     [Header("MOVEMENT INPUT VALUES")]
     [SerializeField] Vector2 movementInput;
     public float horizontalInput;
     public float verticalInput;
     public float moveAmount;
 
-    [Header("CAMERA INPUT VALUES")]
-    [SerializeField] Vector2 cameraInput;
-    public float cameraHorizontalInput;
-    public float cameraVerticalInput;
+    [Header("ACTION INPUT VALUES")]
+    [SerializeField] bool dodgeInput = false;
 
     private void Awake() {
         if (instance == null) {
@@ -51,6 +55,7 @@ public class PlayerInputManager : MonoBehaviour {
         playerControls.Enable();
         playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
         playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+        playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
     }
 
     private void OnDisable() {
@@ -69,8 +74,13 @@ public class PlayerInputManager : MonoBehaviour {
     }
 
     private void Update() {
+        HandleAllInputs();
+    }
+
+    private void HandleAllInputs() {
         HandlePlayerMovementInput();
         HandleCameraMovementInput();
+        HandleDodgeInput();
     }
 
     private void HandlePlayerMovementInput() {
@@ -91,5 +101,13 @@ public class PlayerInputManager : MonoBehaviour {
     private void HandleCameraMovementInput() {
         cameraHorizontalInput = cameraInput.x;
         cameraVerticalInput = cameraInput.y;
+    }
+
+    private void HandleDodgeInput() {
+        if (dodgeInput) {
+            dodgeInput = false;
+
+            player.playerLocomotionManager.AttemptDodge();
+        }
     }
 }

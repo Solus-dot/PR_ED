@@ -10,8 +10,8 @@ public class PlayerCamera : MonoBehaviour {
 
     [Header("Camera Settings")]
     private float cameraSmoothSpeed = 1;    // Bigger the number, longer for camera to reach player
-    [SerializeField] float upAndDownRotationSpeed = 300;
-    [SerializeField] float leftAndRightRotationSpeed = 300;
+    [SerializeField] float upAndDownRotationSpeed = 50;
+    [SerializeField] float leftAndRightRotationSpeed = 50;
     [SerializeField] float minimumPivot = -30;  // Lowest point to look down
     [SerializeField] float maximumPivot = 60;   // Highest point to look up
     [SerializeField] float cameraCollisionRadius = 0.2f;
@@ -61,8 +61,11 @@ public class PlayerCamera : MonoBehaviour {
     private void HandleRotations() {
         leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
         upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
+
+        // Clamp the vertical look angle to prevent over-rotation
         upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
 
+        // Apply horizontal rotation to the entire camera object
         Vector3 cameraRotation = Vector3.zero;
         Quaternion targetRotation;
 
@@ -70,6 +73,7 @@ public class PlayerCamera : MonoBehaviour {
         targetRotation = Quaternion.Euler(cameraRotation);
         transform.rotation = targetRotation;
 
+        // Apply vertical rotation only to the pivot (up and down)
         cameraRotation = Vector3.zero;
         cameraRotation.x = upAndDownLookAngle;
         targetRotation = Quaternion.Euler(cameraRotation);
