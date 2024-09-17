@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour {
     [SerializeField] float upAndDownRotationSpeed = 50;
     [SerializeField] float leftAndRightRotationSpeed = 50;
     [SerializeField] float minimumPivot = -30;  // Lowest point to look down
-    [SerializeField] float maximumPivot = 60;   // Highest point to look up
+    [SerializeField] float maximumPivot = 75;   // Highest point to look up
     [SerializeField] float cameraCollisionRadius = 0.2f;
     [SerializeField] LayerMask collideWithLayers;
 

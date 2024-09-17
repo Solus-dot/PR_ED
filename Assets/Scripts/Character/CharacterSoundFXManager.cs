@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSoundFXManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class CharacterSoundFXManager : MonoBehaviour {
+    private AudioSource audioSource;
+
+    protected virtual void Awake() {
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void PlayRollSFX() {
+        audioSource.PlayOneShot(SoundFXManager.instance.rollSFX);
     }
 }
