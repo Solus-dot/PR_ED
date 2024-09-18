@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class PlayerManager : CharacterManager {
@@ -49,5 +50,18 @@ public class PlayerManager : CharacterManager {
 
             Debug.Log(playerNetworkManager.maxStamina.Value);
         }
+    }
+
+    public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData) {
+        currentCharacterData.characterName = playerNetworkManager.charactername.Value.ToString();
+        currentCharacterData.xPos = transform.position.x;
+        currentCharacterData.yPos = transform.position.y;
+        currentCharacterData.zPos = transform.position.z;
+    }
+
+    public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData) {
+        playerNetworkManager.charactername.Value = currentCharacterData.characterName;
+        Vector3 myPos = new Vector3(currentCharacterData.xPos, currentCharacterData.yPos, currentCharacterData.zPos);
+        transform.position = myPos;
     }
 }

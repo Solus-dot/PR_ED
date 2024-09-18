@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2120978712905200784}
   - component: {fileID: 2531286576046551723}
   - component: {fileID: 6873774635668430723}
-  - component: {fileID: 1991207044977134627}
   - component: {fileID: 8255431434597408012}
   - component: {fileID: 7758964890341274643}
+  - component: {fileID: -4089429471671780261}
   - component: {fileID: -9180086688837269277}
   - component: {fileID: -1530887945098774488}
   - component: {fileID: 8497985999834096739}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1818308590
+  GlobalObjectIdHash: 3737352080
   InScenePlacedSourceGlobalObjectIdHash: 3737352080
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -106,7 +106,43 @@ MonoBehaviour:
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   playerNetworkManager: {fileID: 0}
---- !u!114 &1991207044977134627
+  playerStatsManager: {fileID: 0}
+--- !u!114 &8255431434597408012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844678144023471208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce67308ac86ad2b4aa6014fac6cd8a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaRegenAmount: 2
+  staminaRegenDelay: 2
+--- !u!114 &7758964890341274643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844678144023471208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4d470433218e24c83db195baf6edc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalMovement: 0
+  verticalMovement: 0
+  moveAmount: 0
+  walkingSpeed: 2
+  runningSpeed: 5
+  sprintingSpeed: 7.5
+  rotationSpeed: 15
+  sprintingStaminaCost: 2
+  dodgeStaminaCost: 25
+--- !u!114 &-4089429471671780261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,37 +169,12 @@ MonoBehaviour:
     m_InternalValue: 0
   isSprinting:
     m_InternalValue: 0
---- !u!114 &8255431434597408012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844678144023471208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce67308ac86ad2b4aa6014fac6cd8a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7758964890341274643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844678144023471208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4d470433218e24c83db195baf6edc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalMovement: 0
-  verticalMovement: 0
-  moveAmount: 0
-  walkingSpeed: 2
-  runningSpeed: 5
-  sprintingSpeed: 7.5
-  rotationSpeed: 15
+  endurance:
+    m_InternalValue: 10
+  currentStamina:
+    m_InternalValue: 0
+  maxStamina:
+    m_InternalValue: 0
 --- !u!114 &-9180086688837269277
 MonoBehaviour:
   m_ObjectHideFlags: 0

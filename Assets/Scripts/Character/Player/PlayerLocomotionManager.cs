@@ -111,7 +111,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager {
 
     public void AttemptDodge() {
         if (player.isPerformingAction) return;
-        if (player.playerNetworkManager.currentStamina.Value < dodgeStaminaCost) return;
+        if (player.playerNetworkManager.currentStamina.Value < 0) return;
 
         if (PlayerInputManager.instance.moveAmount > 0) {
             rollDirection = PlayerCamera.instance.transform.forward * verticalMovement;
