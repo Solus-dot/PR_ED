@@ -39,6 +39,7 @@ public class PlayerManager : CharacterManager {
         if (IsOwner) {
             PlayerCamera.instance.player = this;
             PlayerInputManager.instance.player = this;
+            SaveGameManager.instance.player = this;
 
             playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHUDManager.SetNewStaminaValue;
             playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenTimer;

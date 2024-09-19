@@ -7,7 +7,7 @@ using UnityEngine;
 // This script is not a monobehaviour and is serializable
 public class CharacterSaveData {
     [Header("Character Name")]
-    public string characterName;
+    public string characterName = "Character";
 
     [Header("Time Played")]
     public float secondsPlayed;
