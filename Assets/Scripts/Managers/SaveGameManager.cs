@@ -231,6 +231,13 @@ public class SaveGameManager : MonoBehaviour {
         saveFileDataWriter.CreateNewCharSaveFile(currentCharacterData);
     }
 
+    public void DeleteGame(CharacterSlot characterSlot) {
+        saveFileDataWriter = new SaveFileDataWriter();
+        saveFileDataWriter.SaveDataDirPath = Application.persistentDataPath;
+        saveFileDataWriter.saveFileName = DecideFileNameBasedOnCharacterSlotBeingUsed(characterSlot);
+        saveFileDataWriter.DeleteSaveFile();
+    }
+
     // Load all character profiles on device when starting game
     private void LoadAllCharacterProfiles() {
         saveFileDataWriter = new SaveFileDataWriter();
@@ -268,7 +275,11 @@ public class SaveGameManager : MonoBehaviour {
     }
 
     public IEnumerator LoadWorldScene() {
+        // If you want only one world scene, use this.
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+
+        // If you want to use different scenes for levels, use this.
+        // AsyncOperation loadOperation = SceneManager.LoadSceneAsync(currentCharacterData.sceneIndex);
         player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
         yield return null;
     }

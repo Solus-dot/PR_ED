@@ -121,4 +121,8 @@ public class UICharacterSaveSlot : MonoBehaviour {
         SaveGameManager.instance.currentCharacterSlotUsed = characterSlot;
         SaveGameManager.instance.LoadGame();
     }
+
+    public void SelectCurrentSlot() {
+        TitleScreenManager.instance.SelectCharacterSlot(characterSlot);
+    }
 }

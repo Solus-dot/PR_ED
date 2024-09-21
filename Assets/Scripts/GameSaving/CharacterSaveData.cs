@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 // Since we want to reference this data for every save file
 // This script is not a monobehaviour and is serializable
+[System.Serializable]
 public class CharacterSaveData {
+    [Header("Scene Index")]
+    public int sceneIndex = 1;
+
     [Header("Character Name")]
     public string characterName = "Character";
 

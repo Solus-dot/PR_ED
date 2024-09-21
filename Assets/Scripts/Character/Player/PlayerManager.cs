@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : CharacterManager {
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
@@ -54,6 +55,8 @@ public class PlayerManager : CharacterManager {
     }
 
     public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData) {
+        currentCharacterData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        
         currentCharacterData.characterName = playerNetworkManager.charactername.Value.ToString();
         currentCharacterData.xPos = transform.position.x;
         currentCharacterData.yPos = transform.position.y;
